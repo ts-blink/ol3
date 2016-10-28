@@ -123,11 +123,7 @@ ol.renderer.Map.prototype.forEachFeatureAtCoordinate = function(coordinate, fram
    * @return {?} Callback result.
    */
   function forEachFeatureAtCoordinate(feature, layer) {
-    var key = ol.getUid(feature).toString();
-    var managed = frameState.layerStates[ol.getUid(layer)].managed;
-    if (!(key in frameState.skippedFeatureUids && !managed)) {
-      return callback.call(thisArg, feature, managed ? layer : null);
-    }
+    return callback.call(thisArg, feature, layer);
   }
 
   var projection = viewState.projection;
